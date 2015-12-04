@@ -4,6 +4,7 @@ $(document).ready(init)
 	// var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	// var labelIndex = 0;
 function init(){
+
 // $('#find').click(getlocation)
 $('#direct').click(getlocation)
 var styles = [ [{"featureType":"road","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"administrative","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"weight":1}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"weight":0.8}]},{"featureType":"landscape","stylers":[{"color":"#ffffff"}]},{"featureType":"water","stylers":[{"visibility":"off"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"elementType":"labels","stylers":[{"visibility":"off"}]},{"elementType":"labels.text","stylers":[{"visibility":"on"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#000000"}]},{"elementType":"labels.icon","stylers":[{"visibility":"on"}]}] ]
@@ -123,13 +124,15 @@ function getlocation (req, res){
 	})
 }
 function addMarker(location, map) {
-
+	var name = $('#name').val();
+	var description = $('#description').val();
+	var pic = $('#piclink').val();
   var marker = new google.maps.Marker({
     position: location,
     map: map
   });
 		var infowindow = new google.maps.InfoWindow({
-    content: $('#place').val(),
+    content: '<h1>' + name + '</h1>' + '<p>' + description + '</p >' + '<img src='  + pic + '>',
 		draggable: true,
   });
 
@@ -137,6 +140,9 @@ function addMarker(location, map) {
     infowindow.open(map, marker);
   });
 	var latLng = marker.getPosition().lat() + ',' + marker.getPosition().lng();
+		$('#name').val('');
+		$('#description').val('');
+		$('#piclink').val('');
 	// var lng = marker.getPosition().lng();
 	// var latlng =  evt.latLng.lat().toFixed(3) + ',' + evt.latLng.lng().toFixed(3)
 		console.log(latLng);
@@ -145,25 +151,7 @@ function addMarker(location, map) {
 			console.log(data.results[0].formatted_address)
 			$('#start').append( '<option>' + data.results[0].formatted_address + '</option>')
 			$('#end').append( '<option>' + data.results[0].formatted_address + '</option>')
-	console.log(latLng)
-	// google.maps.event.addListener(marker, 'click', function (evt) {
-	// 	var latlng =  evt.latLng.lat().toFixed(3) + ',' + evt.latLng.lng().toFixed(3)
-	// 	console.log(latlng);
-	// 	$.get('https://maps.googleapis.com/maps/api/geocode/json?' + 'latlng=' + latlng + '&key=' + key)
-	// 	.done(function(data){
-	// 		console.log(data.results[0].formatted_address)
-	// 		$('#start').append( '<option>' + data.results[0].formatted_address + '</option>')
-	// 		$('#end').append( '<option>' + data.results[0].formatted_address + '</option>')
-	// 	})
-// 	google.maps.event(marker, 'click', function (evt) {
-// 		var latlng =  evt.latLng.lat().toFixed(3) + ',' + evt.latLng.lng().toFixed(3)
-// 		console.log(latlng);
-// 		$.get('https://maps.googleapis.com/maps/api/geocode/json?' + 'latlng=' + latlng + '&key=' + key)
-// 		.done(function(data){
-// 			console.log(data.results[0].formatted_address)
-// 			$('#start').append( '<option>' + data.results[0].formatted_address + '</option>')
-// 			$('#end').append( '<option>' + data.results[0].formatted_address + '</option>')
-// 		})
-// });
+			console.log(latLng)
+
 })
 }

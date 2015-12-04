@@ -9,6 +9,7 @@ var RSVP = require('rsvp')
 
 var app = express();
 
+app.set('views', 'templates');
 app.set('view engine', 'ejs');
 
 // GENERAL MIDDLEWARE

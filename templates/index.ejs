@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<style>
+
+	</style>
+	<title>Markerman</title>
+	<script src="http://rsvpjs-builds.s3.amazonaws.com/rsvp-latest.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.2.5/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/geofire/3.2.3/geofire.min.js"></script>
+	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhtt7bs2IHD30b3q7qRpMqtyHGgPrGbog&signed_in=true&callback=initMap" async defer></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	Search for a location: <input id="location" type="text">
+	<button id="find">Find info</button><br>
+	Write location name: <input id="name" type="text"><br>
+	Write location description: <input id="description" type="text"><br>
+	Enter location image link: <input id="piclink" type="text"><br>
+	<div id="floating-panel">
+    <b>Start: </b>
+    <select id="start">
+    </select>
+    <b>End: </b>
+    <select id="end">
+    </select>
+    </div>
+  <div id="map"></div>
+	<div id="warnings-panel"></div>
+	<script src="js/map.js"></script>
+	<script src="js/geofire.js"></script>
+</body>
+</html>
